@@ -1,10 +1,21 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
+;
+import { RestaurantsModule } from './restaurants/restaurants.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+
+  //root 모튤 설정
+  imports: [GraphQLModule.forRoot({
+
+
+    autoSchemaFile: true,
+  }), 
+   RestaurantsModule],
+  
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
+
